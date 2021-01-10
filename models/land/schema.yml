@@ -6,6 +6,8 @@ models:
     - name: land_orders
       description: "Orders table"
       columns:
+          - name: datetime
+            description: "The timestamp of when the order was placed"         
           - name: order_id
             description: "The primary key for this table"
             tests:
@@ -15,7 +17,15 @@ models:
             description: "FK to customer dim"
           - name: product_id
             description: "FK to product dim"
+            tests:
+                - relationships:
+                    to: ref('land_products')
+                    field: product_id
           - name: quantity
-            description: "The number of items ordered"            
-          - name: datetime
-            description: "The timestamp of when the order was placed"
+            description: "The number of items ordered" 
+            tests:
+                - not_negative                      
+          - name: filename
+            description: "Filename of source file in S3"
+          - name: date_inserted
+            description: "The timestamp when Snowpipe copied the file into S3"
