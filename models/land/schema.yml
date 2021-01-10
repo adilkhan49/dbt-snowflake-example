@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+
+    - name: land_orders
+      description: "Orders table"
+      columns:
+          - name: order_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+          - name: customer_id
+            description: "FK to customer dim"
+          - name: product_id
+            description: "FK to product dim"
+          - name: quantity
+            description: "The number of items ordered"            
+          - name: datetime
+            description: "The timestamp of when the order was placed"

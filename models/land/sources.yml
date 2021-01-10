@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: fakedata
+    database: dbt
+    schema: raw
+    tables:
+      - name: orders
+      - name: products            
